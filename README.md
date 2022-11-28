@@ -1,13 +1,3 @@
-<!--
- * @Author: lxulxu
- * @Date: 2022-11-11 19:24:43
- * @LastEditors: lxulxu
- * @LastEditTime: 2022-11-24 19:19:38
- * @Description: 
- * 
- * Copyright (c) 2022 by lxulxu, All Rights Reserved. 
--->
-# pdf2markdown
 通过PyMuPDF和PADDLE OCR提取PDF中文本、图片和表格创建markdown，基于Python 3.10 64-bit。
 
 ## 效果
