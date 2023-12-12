@@ -111,10 +111,10 @@ def is_same_table_continued(table1, table2):
 
 def merge_html_tables(html1, html2):
   df1 = pd.read_html(html1, header=0)[0]
-  df2 = pd.read_html(html2, header=None)[0]
+  df2 = pd.read_html(html2, header=0)[0]
 
-  if is_header_similar(df1, df2.iloc[0:1]):
-      df2 = df2.iloc[1:]
+  if not is_header_similar(df1, df2):
+      df2 = pd.read_html(html2, header=None)[0]
 
   df2.columns = df1.columns
 
