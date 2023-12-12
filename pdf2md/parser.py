@@ -2,7 +2,7 @@
 Author: lxulxu
 Date: 2022-09-13 10:28:31
 LastEditors: lxulxu
-LastEditTime: 2022-11-22 19:18:16
+LastEditTime: 2023-12-11 16:04:10
 Description: 
 
 Copyright (c) 2022 by lxulxu, All Rights Reserved. 
@@ -12,7 +12,7 @@ from fitz import Matrix, Page, Rect
 from paddleocr import PPStructure
 
 from .area import Area
-from .block import FigureBlock, TabelBlock, TextBlock
+from .block import FigureBlock, TabelBlock, TextBlock, is_same_table_continued
 
 HEADER_STEP = 5
 EXPANDING = 10
@@ -82,8 +82,23 @@ def vertically_merge_block(blocks:list) -> list:
       res.append(block)
 
   return res
-    
-  
+
+def merge_spanning_tables(blocks):
+  merged_tables = []
+  previous_table = None
+
+  for current_table in blocks:
+      if previous_table is not None and current_table is not None:
+        if previous_table.is_table and current_table.is_table:
+            if is_same_table_continued(previous_table, current_table):        
+                previous_table.merge_with(current_table)
+                continue
+
+      merged_tables.append(current_table)
+      previous_table = current_table
+
+  return merged_tables
+
 def parse_file(filename:str, is_scan_ver:bool) -> list:
   doc = fitz.open(filename)
   
@@ -93,5 +108,6 @@ def parse_file(filename:str, is_scan_ver:bool) -> list:
 
   add_title_level(blocks)
   blocks = vertically_merge_block(blocks)
+  blocks = merge_spanning_tables(blocks)
 
   return blocks

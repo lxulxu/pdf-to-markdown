@@ -2,16 +2,14 @@
 Author: lxulxu
 Date: 2022-09-13 10:03:52
 LastEditors: lxulxu
-LastEditTime: 2022-11-22 19:42:46
+LastEditTime: 2023-12-11 16:04:33
 Description: 
 
 Copyright (c) 2022 by lxulxu, All Rights Reserved. 
 '''
 
 import argparse
-import io
 import os
-import sys
 
 from pdf2md.parser import parse_file
 from pdf2md.writer import Writer

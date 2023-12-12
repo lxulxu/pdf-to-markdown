@@ -1,3 +1,6 @@
-paddleocr==2.6.1.0
-mdutils==1.4.0
-pandas==1.5.1
+Levenshtein==0.23.0
+mdutils==1.6.0
+paddleocr==2.7.0.3
+paddlepaddle==2.5.2
+pandas==2.1.4
+tabulate==0.9.0
