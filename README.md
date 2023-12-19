@@ -12,10 +12,9 @@
 
 可通过`python start.py -h`查看
 
-- `-i`:PDF是否为扫描版，默认选项y（扫描版会通过OCR提取文字，非扫描版通过PyMuPDF API提取文字）
-- `-f`:单个文件或文件夹，仅支持一级目录
+- `-f`:单个文件或文件夹路径，仅支持一级目录
 
-例如`python start.py -i n -f samples`
+例如`python start.py -f samples`
 
 ## 限制
 - 仅支持中英文（由于PyMuPDF存在问题偶尔会出现乱码）

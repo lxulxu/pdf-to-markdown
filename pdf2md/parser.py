@@ -2,7 +2,7 @@
 Author: lxulxu
 Date: 2022-09-13 10:28:31
 LastEditors: lxulxu
-LastEditTime: 2023-12-11 16:04:10
+LastEditTime: 2023-12-19 09:10:58
 Description: 
 
 Copyright (c) 2022 by lxulxu, All Rights Reserved. 
@@ -99,12 +99,26 @@ def merge_spanning_tables(blocks):
 
   return merged_tables
 
-def parse_file(filename:str, is_scan_ver:bool) -> list:
+def is_scanned_pdf(doc):
+    has_text_layer = any(page.get_text("text") for page in doc)
+
+    text_extracted = ""
+    for page in doc:
+        text_extracted += page.get_text()
+
+    if not has_text_layer or len(text_extracted.strip()) < 100:
+        return True
+    return False
+
+def parse_file(filename:str) -> list:
   doc = fitz.open(filename)
+  is_scanned_file = is_scanned_pdf(doc)
   
   blocks = []
   for page in doc:
-    blocks += get_page_blocks(page, is_scan_ver)
+    blocks += get_page_blocks(page, is_scanned_file)
+  
+  doc.close()
 
   add_title_level(blocks)
   blocks = vertically_merge_block(blocks)
