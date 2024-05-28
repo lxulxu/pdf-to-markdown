@@ -1,10 +1,10 @@
 通过PyMuPDF和PADDLE OCR提取PDF中文本、图片和表格创建markdown，基于Python 3.10 64-bit。
 
 ## 效果
-<a href=''><img src='https://raw.githubusercontent.com/lxulxu/MarkdownPic/master/20221124/pdf2md.6lesgfxtb6c0.jpg'></a>
+<a href=''><img src='https://raw.githubusercontent.com/lxulxu/lxulxu.github.io/master/assets/images/Y2024Q2/pdf2md.6lesgfxtb6c0.jpg'></a>
 
 ## 安装依赖
-1. 安装PaddlePaddle，参考https://www.paddlepaddle.org.cn/documentation/docs/zh/install/pip/windows-pip.html
+1. 安装PaddlePaddle，参考https://www.paddlepaddle.org.cn/documentation/docs/zh/install/pip/frompip.html
 
 2. `pip install -r requirements.txt`
 
